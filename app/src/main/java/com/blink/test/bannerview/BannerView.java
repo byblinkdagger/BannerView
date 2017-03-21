@@ -8,7 +8,9 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -99,17 +101,40 @@ public class BannerView extends FrameLayout {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                Log.d("dagger","position :"+position+"    positionOffset :"+positionOffset);
             }
 
             @Override
             public void onPageSelected(int position) {
+                Log.d("dagger","onPageSelected :"+position);
                  updateLinearPosition();
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        mViewPager.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        if (mBannerHandler != null) {
+                            if (mBannerHandler.hasMessages(MSG_LOOP)) {
+                                mBannerHandler.removeMessages(MSG_LOOP);
+                            }
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if (mBannerHandler != null) {
+                            mBannerHandler.sendEmptyMessageDelayed(MSG_LOOP, LOOP_INTERVAL);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
     }
