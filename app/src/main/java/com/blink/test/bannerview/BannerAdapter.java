@@ -23,7 +23,7 @@ public class BannerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        if (viewList.size() < cacheCount){
+        if (viewList.size() > cacheCount){
             container.removeView(viewList.get(position%size));
         }
     }
