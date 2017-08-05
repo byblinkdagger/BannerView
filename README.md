@@ -17,3 +17,4 @@ compile 'com.coldmoqiuli:banners:1.0.0'
 * like this 
 
 <img src="/screen/banners.gif" alt="screenshot" title="screenshot" width="270" height="486" />
+
