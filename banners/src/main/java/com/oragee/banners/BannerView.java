@@ -1,4 +1,4 @@
-package com.blink.test.bannerview;
+package com.oragee.banners;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -8,7 +8,6 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,15 +23,12 @@ import java.util.List;
 public class BannerView extends FrameLayout {
 
     private static final int MSG_LOOP = 1000;
-    //间隔时间
     private static long LOOP_INTERVAL = 5000;
     private LinearLayout mLinearPosition = null;
     private ViewPager mViewPager = null;
     private BannerHandler mBannerHandler = null;
 
-    //真实显示的banner view 集合
     private List<View> viewList;
-    //真实显示的banner view个数
     private int viewSize;
 
     private static class BannerHandler extends Handler {
@@ -101,12 +97,10 @@ public class BannerView extends FrameLayout {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("dagger","position :"+position+"    positionOffset :"+positionOffset);
             }
 
             @Override
             public void onPageSelected(int position) {
-                Log.d("dagger","onPageSelected :"+position);
                  updateLinearPosition();
             }
 
@@ -144,7 +138,6 @@ public class BannerView extends FrameLayout {
         mLinearPosition.setOrientation(LinearLayout.HORIZONTAL);
         LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT
                 , ViewGroup.LayoutParams.WRAP_CONTENT);
-        //点在中间
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
         layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.dimen_9dp);
         mLinearPosition.setPadding(getResources().getDimensionPixelSize(R.dimen.dimen_9dp), 0, 0, 0);
@@ -211,11 +204,6 @@ public class BannerView extends FrameLayout {
 
     public void setTransformAnim (boolean flag){
         if (flag){
-            /**
-             *假设现在ViewPager在A页现在滑出B页，则:
-              A页的position变化就是( 0, -1]
-              B页的position变化就是[ 1 , 0 ]
-             */
             mViewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
                 private static final float MIN_SCALE = 0.75f;
                 @Override
@@ -226,7 +214,7 @@ public class BannerView extends FrameLayout {
                         // This page is way off-screen to the left.
                         view.setRotation(0);
 
-                    } else if (position <= 1) // a页滑动至b页 ； a页从 0.0 ~ -1 ；b页从1 ~ 0.0
+                    } else if (position <= 1)
                     { // [-1,1]
                         // Modify the default slide transition to shrink the page as well
                         if (position < 0)

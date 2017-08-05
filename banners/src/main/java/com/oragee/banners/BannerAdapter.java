@@ -1,7 +1,6 @@
-package com.blink.test.bannerview;
+package com.oragee.banners;
 
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 

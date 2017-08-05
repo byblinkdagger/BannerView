@@ -1,6 +1,12 @@
 # a simple BannerView which can auto switch pages based on ViewPager and LinearLayout.
 
-* useage
+* dependencies（依赖）
+
+```
+compile 'com.coldmoqiuli:banners:1.0.0'
+```
+
+* useage（传递进一个List<ImageView>,如需listener,clicklistener也在创建ImageView的时候自行处理好即可）
 
 ```
         bannerView = (BannerView) findViewById(R.id.banner);
@@ -10,4 +16,4 @@
 
 * like this 
 
-![](http://okvzjnch5.bkt.clouddn.com/ezgif.com-video-to-gif.gif)
+<img src="/screen/banners.gif" alt="screenshot" title="screenshot" width="270" height="486" />

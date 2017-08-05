@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.oragee.banners.BannerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
             viewList.add(image);
         }
         bannerView = (BannerView) findViewById(R.id.banner);
-        bannerView.setViewList(viewList);
         bannerView.startLoop(true);
+
+        bannerView.setViewList(viewList);
 //        bannerView.setTransformAnim(true);
 
     }

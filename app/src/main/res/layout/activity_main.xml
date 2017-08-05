@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.blink.test.bannerview.MainActivity">
 
-    <com.blink.test.bannerview.BannerView
+    <com.oragee.banners.BannerView
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:id="@+id/banner"/>
