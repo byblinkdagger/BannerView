@@ -1,6 +1,6 @@
 # a simple BannerView which can auto switch pages based on ViewPager and LinearLayout.
 
-# update 2017-08-24 解决了多此界面返回后轮播混乱的问题 
+# update 2017-08-24 解决了多此界面返回后轮播混乱的问题
 
 * dependencies（依赖）
 
