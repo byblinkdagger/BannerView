@@ -1,11 +1,11 @@
 # a simple BannerView which can auto switch pages based on ViewPager and LinearLayout.
 
-# update 2017-08-24 解决了多此界面返回后轮播混乱的问题
+##### update 2017-08-24 解决了从其他界面返回后banner轮播混乱的问题
 
 * dependencies（依赖）
 
 ```
-compile 'com.coldmoqiuli:banners:1.0.0'
+compile 'com.coldmoqiuli:banners:1.0.1'
 ```
 
 * useage（传递进一个List<ImageView>,如需listener,clicklistener也在创建ImageView的时候自行处理好即可）

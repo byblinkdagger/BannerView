@@ -29,7 +29,7 @@ publish {
     userOrg = 'coldmoqiuli'
     groupId = 'com.coldmoqiuli'
     artifactId = 'banners'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'This is an easy banner view for android'
     website = 'https://github.com/byblinkdagger/BannerView'
 }
