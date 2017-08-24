@@ -10,6 +10,8 @@ import com.oragee.banners.BannerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +37,5 @@ public class MainActivity extends AppCompatActivity {
 
         bannerView.setViewList(viewList);
 //        bannerView.setTransformAnim(true);
-
     }
 }

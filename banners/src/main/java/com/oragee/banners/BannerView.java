@@ -47,12 +47,15 @@ public class BannerView extends FrameLayout {
             }
             BannerView bannerView = this.weakReference.get();
             if (bannerView == null || bannerView.mViewPager == null || bannerView.mViewPager.getAdapter() == null || bannerView.mViewPager.getAdapter().getCount() <= 0) {
-                sendEmptyMessageDelayed(MSG_LOOP, LOOP_INTERVAL);
+//                sendEmptyMessageDelayed(MSG_LOOP, LOOP_INTERVAL);
                 return;
             }
             int curPos = bannerView.mViewPager.getCurrentItem();
             curPos = (curPos + 1) % bannerView.mViewPager.getAdapter().getCount();
             bannerView.mViewPager.setCurrentItem(curPos);
+            if (hasMessages(MSG_LOOP)){
+                removeMessages(MSG_LOOP);
+            }
             sendEmptyMessageDelayed(MSG_LOOP, LOOP_INTERVAL);
         }
     }
@@ -77,6 +80,7 @@ public class BannerView extends FrameLayout {
             if (mBannerHandler != null) {
                 if (mBannerHandler.hasMessages(MSG_LOOP)) {
                     mBannerHandler.removeMessages(MSG_LOOP);
+                    mBannerHandler = null;
                 }
             }
         }
@@ -247,8 +251,17 @@ public class BannerView extends FrameLayout {
         }
     }
 
-    public static void setLoopInterval(long loopInterval) {
+    public void setLoopInterval(long loopInterval) {
         LOOP_INTERVAL = loopInterval;
+    }
+	
+	    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mBannerHandler != null){
+            mBannerHandler.removeMessages(MSG_LOOP);
+            mBannerHandler = null;
+        }
     }
 
 }
